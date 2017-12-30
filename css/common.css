@@ -62,7 +62,7 @@ html, body, #wrap, #main, .main-contents {
 	height: 100%;
 }
 body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
     background: #FFFFFF;
     font-size: 10px;
     min-height: 600px;
@@ -75,13 +75,13 @@ a {
 #wrap {
     padding: 0;
     position: relative;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
     overflow: hidden;
 }
 #wrap2 {
     padding: 0;
     position: absolute;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
     box-sizing: content-box;
 }
 .rolloverize a {
@@ -629,7 +629,7 @@ body {
 	display: block;
 	height: 23px;
 	padding: 3px 1em;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
     text-shadow: 0 0 5px white;
 }
 .header-container1 .logo .btn-pulldown :hover{
@@ -644,7 +644,7 @@ body {
 
 }
 .header-container2 .menu img {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
 	display: none;
 }
 .header-container2 .menu span {
@@ -727,7 +727,7 @@ body {
 	padding: 0;
 }
 .gnav-container .gnav > li.menu {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P';
 	margin-top: 25px;
 	margin-bottom: 6px;
 }
