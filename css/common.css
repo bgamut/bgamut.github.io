@@ -415,7 +415,7 @@ a {
 	bottom: 0%;
 	right: 15px;
 	margin-left: -41px;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 	opacity: 0;
 }
 .nav-arrow a:hover img {
@@ -837,7 +837,7 @@ h2, h3 {
 top.html & .collection-renew 2016.10
 ====================================== */
 .skip {
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 	position: fixed;
 	right: 15px;
 	bottom: 0%;
