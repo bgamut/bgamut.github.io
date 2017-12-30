@@ -516,7 +516,6 @@ a {
 }
 .contactlist .maplink {
 	font-weight: bold;
-	text-decoration: underline;
 }
 {
     background-color:#000000;
@@ -790,7 +789,6 @@ body {
 	text-shadow: none !important;
 }
 a, a:visited {
-	text-decoration: underline;
 }
 a[href]:after {
 	content: " (" attr(href) ")";
@@ -922,7 +920,6 @@ top.html & .collection-renew 2016.10
 	vertical-align: top;
 }
 .collection-renew .cr-list .cr-block .cr-img .cr-box p {
-	text-decoration: underline;
 }
 /* .blueimp-gallery */
 .blueimp-gallery {
