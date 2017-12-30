@@ -426,13 +426,13 @@ a {
 	border-bottom: none;
 }
 .contents {
-	padding-top: 130px;
+	padding-top: 13px;
 	color: #FFFFFF;
 	font-size: 14px;
 }
 .contents img {
 	vertical-align: top;
-	padding: 0px 10px;
+	
 }
 .contents a {
 	color: #FFFFFF;
@@ -441,11 +441,10 @@ a {
 	-o-transition: all 100ms;
 	-webkit-transition: all 100ms;
 	transition: all 100ms;
- filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
 	opacity: 1;
 }
 .contents a:hover {
- filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+ 
 	opacity: 0.6;
 }
 .footer {
@@ -488,28 +487,21 @@ a {
 }
 .contactlist {
     width: 80%;
-    padding: 0 10%;
     line-height: 1.5em;
     text-shadow: 0px 0px 5px #000000;
 }
 .contactlist div {
-	padding: 120px 0 0 0;
-	margin: -120px 0 0 0;
+    margin-left: 15px;
 }
 .contactlist .country {
 	line-height: 2;
 	text-align: center;
 	font-size: 16px;
 	font-weight: 600;
-	padding: 0px;
-	padding-bottom: 10px;
-	margin: 0px;
-	margin-top: 10px;
 }
 .contactlist .country-label {
 	font-size: 20px;
 	font-weight: 600;
-	margin-top: 10px;
 }
 .contactlist .country-end {
 	clear: both;
@@ -517,7 +509,7 @@ a {
 .contactlist .contact-info {
 	width: 45%;
 	float: left;
-	padding-right: 5%;
+
 }
 .contactlist .address {
 	font-size: 12px;
