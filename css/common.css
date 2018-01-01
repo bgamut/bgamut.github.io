@@ -576,6 +576,7 @@ body {
 	-webkit-transition: none;
 	transition: none;
 	color: #000000;
+    font-family: 'Press Start 2P';
 }
 .gnav-container a:hover {
 	color: inherit;
@@ -610,6 +611,7 @@ body {
 }
 .toppage-select a {
 	display: block;
+    font-family: 'Press Start 2P';
 }
 .toppage-select a:hover {
 	opacity: 0.6;
@@ -633,6 +635,7 @@ body {
 	font-size: 12px;
 	line-height: 1;
 	padding: 10px 0;
+    font-family: 'Press Start 2P';
 
 }
 .header-container2 .menu img {
@@ -655,7 +658,7 @@ body {
 	z-index: 100;
 	border-bottom: 1px solid #988660;
 }
-.shoplist .country {
+.contactlist .country {
 	line-height: 1.5;
 	text-align: center;
 	font-size: 12px;
@@ -664,6 +667,7 @@ body {
 	padding-bottom: 10px;
 	margin: 0px;
 	margin-top: 13px;
+    font-family: 'Press Start 2P';
 }
 .gnav-container ul {
 	clear: both;
@@ -732,9 +736,11 @@ body {
 	left: 50%;
 	margin-left: -110px;
 	margin-top: -1em;
+    font-family: 'Press Start 2P';
 }
 .main-contents .info-text1 {
 	width: 220px;
+    font-family: 'Press Start 2P';
 }
 .main-contents .info2 {
 	position: absolute;
@@ -745,9 +751,11 @@ body {
 	left: 50%;
 	margin-left: -155px;
 	margin-top: -1em;
+    font-family: 'Press Start 2P';
 }
 .main-contents .info-text2 {
 	width: 310px;
+    font-family: 'Press Start 2P';
 }
 .main-contents .info3 {
 	position: absolute;
@@ -758,9 +766,11 @@ body {
 	left: 50%;
 	margin-left: -150px;
 	margin-top: -1em;
+    font-family: 'Press Start 2P';
 }
 .main-contents .info-text3 {
 	width: 300px;
+    font-family: 'Press Start 2P';
 }
 .main-contents .info4 {
 	position: absolute;
@@ -771,6 +781,7 @@ body {
 	left: 50%;
 	margin-left: -150px;
 	margin-top: -1em;
+    font-family: 'Press Start 2P';
 }
 .main-contents .info-text4 {
 	width: 300px;
@@ -790,6 +801,7 @@ body {
 	text-shadow: none !important;
 }
 a, a:visited {
+    font-family: 'Press Start 2P';
 }
 a[href]:after {
 	content: " (" attr(href) ")";
@@ -819,6 +831,7 @@ img {
 p, h2, h3 {
 	orphans: 3;
 	widows: 3;
+    font-family: 'Press Start 2P';
 }
 h2, h3 {
 	page-break-after: avoid;
@@ -897,11 +910,13 @@ top.html & .collection-renew 2016.10
 .collection-renew .cr-list .cr-block .cr-img .cr-box a {
 	outline: none;
     text-shadow: 0px 0px 5px #000000;
+    font-family: 'Press Start 2P';
 }
 .collection-renew .cr-list .cr-block .cr-img .cr-box a img {
 	-webkit-transition: all 0.3s;
 	transition: all 0.3s;
     text-shadow: 0px 0px 5px #000000;
+    font-family: 'Press Start 2P';
 }
 .collection-renew .cr-list .cr-block .cr-img .cr-box a:hover img {
 	opacity: 0.7;
@@ -921,6 +936,7 @@ top.html & .collection-renew 2016.10
 	vertical-align: top;
 }
 .collection-renew .cr-list .cr-block .cr-img .cr-box p {
+    font-family: 'Press Start 2P';
 }
 /* .blueimp-gallery */
 .blueimp-gallery {
