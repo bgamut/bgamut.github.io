@@ -877,12 +877,14 @@ top.html & .collection-renew 2016.10
 	webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+    font-family: 'Press Start 2P';
 }
 /* .cr-block */
 .collection-renew .cr-list .cr-block {
 	padding: 25px 0;
 	webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
+    font-family: 'Press Start 2P';
 }
 .collection-renew .cr-list .cr-block:after {
 	content: "";
@@ -893,12 +895,14 @@ top.html & .collection-renew 2016.10
 .collection-renew .cr-list .cr-block .cr-txt {
 	width: 40%;
 	float: left;
+    font-family: 'Press Start 2P';
 }
 /* .cr-block .cr-img */
 .collection-renew .cr-list .cr-block .cr-img {
 	width: 60%;
 	float: left;
 	font-size: 0;
+    font-family: 'Press Start 2P';
 }
 /* .cr-block .cr-img .cr-box */
 .collection-renew .cr-list .cr-block .cr-img .cr-box {
@@ -906,6 +910,7 @@ top.html & .collection-renew 2016.10
 	display: inline-block;
 	font-size: 10px;
 	vertical-align: top;
+    font-family: 'Press Start 2P';
 }
 .collection-renew .cr-list .cr-block .cr-img .cr-box a {
 	outline: none;
@@ -1034,6 +1039,7 @@ top.html & .collection-renew 2016.10
 	border-bottom: #666 dotted 1px;
 	float: none;
     text-shadow: 0px 0px 5px #000000;
+    font-family: 'Press Start 2P';
 }
 /* .cr-block .cr-img */
 .collection-renew .cr-list .cr-block .cr-img {
@@ -1043,15 +1049,18 @@ top.html & .collection-renew 2016.10
 	webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	float: none;
+    font-family: 'Press Start 2P';
 }
 /* .cr-block .cr-img .cr-box */
 .collection-renew .cr-list .cr-block .cr-img .cr-box {
 	width: 50%;
 	display: inline-block;
 	font-size: 10px;
+    font-family: 'Press Start 2P';
 }
 .collection-renew .cr-list .cr-block .cr-img .cr-box a {
 	display: block;
+    font-family: 'Press Start 2P';
 }
 /*.staff-pop */
 .staff-pop {
@@ -1087,12 +1096,13 @@ top.html & .collection-renew 2016.10
 #loopslider
 ----------------------- */
 #loopslider {
-	margin: 0 auto;
-	width: 100%;
-	height: 400px;
-	text-align: left;
-	position: relative;
-	overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    height: 400px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Press Start 2P';
 }
 #loopslider ul {
 	width: 100%;
@@ -1100,10 +1110,12 @@ top.html & .collection-renew 2016.10
 	float: left;
 	display: inline;
 	overflow: hidden;
+    font-family: 'Press Start 2P';
 }
 #loopslider ul {
 	display: inline-block;
 	overflow: hidden;
+    font-family: 'Press Start 2P';
 }
 #loopslider ul:after {
 	content: ".";
@@ -1111,6 +1123,7 @@ top.html & .collection-renew 2016.10
 	clear: both;
 	display: block;
 	visibility: hidden;
+    font-family: 'Press Start 2P';
 }
 #loopslider ul li {
 	width: 600px;
@@ -1118,10 +1131,12 @@ top.html & .collection-renew 2016.10
 	float: left;
 	display: inline;
 	overflow: hidden;
+    font-family: 'Press Start 2P';
 }
 #loopslider ul li img {
 	width: 600px;
 	height: 400px;
+    font-family: 'Press Start 2P';
 }
 /* -----------------------
 #video
