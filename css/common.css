@@ -534,6 +534,7 @@ body {
 #wrap {
 	min-width: 100%;
 	min-height: 100%;
+    font-family: 'Press Start 2P';
 }
 .pc-only {
 	display: none;
