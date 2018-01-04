@@ -41,74 +41,65 @@
                                 <a data-id="228649880" href="https://instagram.com/squwbs/" >
                                     <figure><img src="img/thm_mv_2016_oct.png" alt=""></figure>
                                 </a>
-                                <div class="link-figure">
-                                    <p>INIT</p>
-                                    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-                                    <div id="paypal-button-container"></div>
-                                    <script>
-                                        paypal.Button.render({
-
-        // Set your environment
-
-        env: 'production', // sandbox | production
-
-        // Specify the style of the button
-
-        style: {
-            layout: 'vertical',  // horizontal | vertical
-            size:   'responsive',    // medium | large | responsive
-            shape:  'rect',      // pill | rect
-            color:  'black'       // gold | blue | silver | black
-        },
-
-        // Specify allowed and disallowed funding sources
-        //
-        // Options:
-        // - paypal.FUNDING.CARD
-        // - paypal.FUNDING.CREDIT
-        // - paypal.FUNDING.ELV
-
-        funding: {
-            allowed: [ paypal.FUNDING.CARD, paypal.FUNDING.CREDIT ],
-            disallowed: [ ]
-        },
-
-        // PayPal Client IDs - replace with your own
-        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-
-        client: {
-            sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-            production: 'access_token$production$8b6pv4ntm2v5g8c7$ba26213ac4cdcf07db0556d0d0051cfb'
-        },
-
-         commit: true,
-
-        payment: function(data, actions) {
-            return actions.payment.create({
-                payment: {
-                    transactions: [
-                        {
-                            amount: { total: '0.00', currency: 'USD' }
-                        }
-                    ]
-                }
-            });
-        },
-
-        onAuthorize: function(data, actions) {
-            return actions.payment.execute().then(function() {
-                window.alert('Payment Complete!');
-            });
-        },
-        onError: function (err) {
-            log(err);
-                                        }
-
-    }, '#paypal-button-container');
-                                    </script>
-                                </div>
                             </div>
-                            
+                            <div class="product">
+                                <p style="display:inline-flex;">INIT</p>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display:inline-block">
+
+                                    <!-- Identify your business so that you can collect the payments. -->
+                                    <input type="hidden" name="business" value="bernardahn@squwbs.com">
+
+                                    <!-- Specify a Buy Now button. -->
+                                    <input type="hidden" name="cmd" value="_xclick">
+
+                                    <!-- Specify details about the item that buyers will purchase. -->
+                                    <input type="hidden" name="item_name" value="INIT">
+                                    <input type="hidden" name="amount" value="20.00">
+                                    <input type="hidden" name="currency_code" value="USD">
+                                    <!--
+                                    <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/pp-acceptance-small.png" alt="PayPal Acceptance" style="display:inline-block">
+                                    -->
+                                    <!-- Display the payment button. -->
+                                    <!--
+                                    <input type="image" name="submit" border="0"
+                                           src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_buynow_107x26.png"
+                                           alt="Buy Now" width="107">
+                                    -->
+                                    <input type="image" name="submit" border="0"
+                                           src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppppcmcvdam.png"
+                                           alt="Buy Now" width="145" style="display:inline-flex;">
+                                    
+
+                                </form>
+                                <!--
+        <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+
+            <input type="hidden" name="business" value="cumber86@hotmail.com">
+
+
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="add" value="1">
+
+
+            <input type="hidden" name="item_name" value="INIT">
+            <input type="hidden" name="amount" value="0.01">
+            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="shopping_url" value="https://squwbs.com/products.html">
+            <input type="hidden" name="return" value="http://www.squwbs.com/transactioncomplete.zip" />
+
+
+            <input type="image" name="submit"
+                   src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_addtocart_120x26.png"
+                   alt="Add to Cart">
+            <img alt="" width="1" height="1"
+                 src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif">
+        </form>
+        -->
+                                <!--
+        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppppcmcvdam.png" alt="Credit Card Badges" width="195">
+        -->
+                            </div>
                         </div>
                     </div>
                 </div>
