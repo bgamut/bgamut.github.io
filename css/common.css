@@ -412,14 +412,11 @@ a {
 }
 .nav-arrow {
 	position: fixed;
-	bottom: 0%;
-	right: 15px;
-	margin-left: -41px;
-	margin-bottom: 0px;
+	bottom: 0px;
+	left: 15px;
 	opacity: 0;
 }
 .nav-arrow a:hover img {
- filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
 	opacity: 0.6;
 }
 .gnav-container .gnav .collection-title.campaign:hover {
@@ -843,7 +840,7 @@ top.html & .collection-renew 2016.10
 .skip {
 	margin-bottom: 30px;
 	position: fixed;
-	right: 15px;
+	left: 15px;
 	bottom: 0%;
 	z-index: 1000 !important;
 }
