@@ -16,93 +16,73 @@
     <meta property="og:locale" content="ko_KR">
     <meta property="og:title" content="squwbs">
     <meta property="og:type" content="index.html">
-    <meta property="og:image" content="img/og_img.html">
+    <meta property="og:image" content="img/logo.jpg">
     <meta property="og:description" content="　　　">
     <meta property="og:site_name" content="squwbs">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/common.css">
 </head>
-
 <body style="background-color: #000000;">
-    <div class="fadelayer"></div>
-    <div class="pc" id="wrap">
+    <p class="skip"><a href="top.html"><img src="img/nav_arrow.png" alt="" height="26" width="25"></a></p>
+    <video id="video">
+        <source src="mov/0710MMJ_long.m4v">
+    </video>
+    <div id="movie-wrap">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/6b6m1cVtxqw?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        </a>
 
-        <div class="header-container1">
-            <div class="logo">
-                <!--<span class="btn-pulldown"><a href="#" id="mobile-menu-open">menu</a></span>
-                -->
-                <h1><a href="index.html"><img src="img/logo.jpg" alt="" height="48" width="247"></a></h1>
-            </div>
-            <div class="link">
-                <a href="https://instagram.com/squwbs/" target="_blank"><img src="img/link.png" alt="" height="20" width="20"></a>
-            </div>
+        <div class="pc" id="wrap">
+
         </div>
+        <script src="../f.vimeocdn.com/js/froogaloop2.min.js"></script>
+        <script src="js/jquery_min_map.js"></script>
+        <script src="js/jquery_transit_min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/swipe.js"></script>
+        <script src="js/common.js"></script>
+        <!--[if lt IE 9]>
+        <script src="./js/jquery.backgroundSize.js"></script>
+        <script>$('section .post').css( "background-size", "cover" );</script>
+        <![endif]-->
+        <script>
 
+            var player = null;
+            if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
+                var iframe = document.getElementById('vimeoplayer');
+                var player = Froogaloop(iframe);
+                player.addEvent('ready', function () {
+                    player.addEvent('finish', function () {
+                        document.location = "index.html";
+                    });
+                });
+                $('#video').remove();
+            }
+            else {
+                $('#vimeoplayer').remove();
+            }
 
-        <div id="main">
-            <div class="main-contents" style="margin-top: -786px;">
-                <section style="width:100%; height:100%">
-                    <div class="post" style="background-image: url('img/leather01.jpg');;background-repeat:repeat;">
-                        <article class="info1">
-                            <a href="news.html">
-                                <h1 class="title info-text1" alt="">news</h1>
-                            </a>
-                        </article>
-                    </div>
-                </section>
-                <section style="width:100%; height:100%">
-                    <div class="post" style="background-image: url('img/leather02.jpg');background-repeat:repeat;">
-                        <article class="info2">
-                            <a href="products.html">
-                                <h1 class="title info-text2" alt="">products</h1>
-                            </a>
-                        </article>
-                    </div>
-                </section>
-                <section style="width:100%; height:100%">
-                    <div class="post" style="background-image: url('img/leather04.jpg');background-repeat:repeat;">
-                        <article class="info3">
-                            <a href="contacts.html">
-                                <h1 class="title info-text3" alt="">contacts</h1>
-                            </a>
-                        </article>
-                    </div>
-                </section>
-            </div>
-            <div style="opacity: 1; margin-bottom: 30px;" class="nav-arrow">
-                <a href="javascript:void(0);"><img src="img/nav_arrow.png" alt="" height="26" width="25"></a>
-            </div>
-        </div>
+            var h = window.innerHeight;
+            $('#movie-wrap').css({ 'height': h + 'px', 'overflow': 'hidden' })
 
-    </div>
-
-    <script src="js/jquery_min_map.js"></script>
-    <script src="js/jquery_transit_min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="js/swipe.js"></script>
-    <script src="js/common.js"></script>
-
-    <!--[if lt IE 9]>
-    <script src="./js/jquery.backgroundSize.js"></script>
-    <script>$('section .post').css( "background-size", "cover" );</script>
-    <![endif]-->
-
-    <script>
-        $(function () {
-            fadeSpeed = 3000;
-            $(window).load(function () {
-                var targetObj = $('.fadelayer');
-                targetObj.css({ opacity: '1' });
-                targetObj.stop().animate(
-                    { opacity: '0' },
-                    { duration: fadeSpeed, complete: function () { targetObj.css({ visibility: 'hidden' }); } }
-                );
+            $(function () {
+                ua = navigator.userAgent;
+                $(window).load(function () {
+                    if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/)) {
+                        $('.toppage-container').remove();
+                        $('#vimeoplayer').css({ 'display': 'block' });
+                    } else {
+                        $('#video').css({ 'display': 'block' });
+                        var $v = $('#video').get(0);
+                        $v.addEventListener('ended', function () {
+                            document.location = "index.html";
+                        }, false);
+                        $v.play();
+                    }
+                    $('body').css({ visibility: 'visible' });
+                });
             });
-        });
-    </script>
-    <!-- 2017/07/13 -->
+        </script>
 </body>
-<!-- Mirrored from www.mastermindjapan.com/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Dec 2017 22:42:28 GMT -->
 </html>
