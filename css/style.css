@@ -298,7 +298,7 @@ body {
     padding: 0px;
     margin: 0 auto;
     z-index: auto;
-    transform: translateY(10vh);
+    transform: translateY(-10vh);
     font-size:1.5em;
     color:white;
     opacity:0.7;
@@ -313,7 +313,7 @@ body {
     padding: 0px;
     margin: 0 auto;
     z-index: auto;
-    transform: translateY(10vh);
+    transform: translateY(-10vh);
     font-size:1.5em;
     color:white;
     opacity:0.85;
