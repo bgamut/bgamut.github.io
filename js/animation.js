@@ -67,7 +67,7 @@ $(document).ready(function () {
         switch (window.orientation) {
             case 0:
                 info.css("transform", "translateY(-28px);");
-                /*arrow.css("transform", "translateY(-75px);");*/
+                arrow.css("transform", "translateY(-75px);");
             case 90:
                 break;
             case 180:
