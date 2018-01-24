@@ -6,6 +6,7 @@ $(document).ready(function () {
     $(".gallery .info:first").insertAfter(".gallery .info:last");
     var body = $("body");
     var arrow = $(".nav-arrow");
+    var info = $(".gallery .info");
     function fade() {
         body.animate({
             backgroundColor: "white"
@@ -66,6 +67,7 @@ $(document).ready(function () {
         switch (window.orientation) {
             case 0:
                 arrow.css("transform", ": translateY(-75px);");
+                info.css("transform", ": translateY(-75px);")
             case 90:
                 break;
             case 180:
