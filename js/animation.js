@@ -5,6 +5,7 @@ $(document).ready(function () {
     slider.css("height", height + "%");
     $(".gallery .info:first").insertAfter(".gallery .info:last");
     var body = $("body");
+    var arrow = $(".nav-arrow");
     function fade() {
         body.animate({
             backgroundColor: "white"
@@ -50,6 +51,8 @@ $(document).ready(function () {
            
                 if (direction == "up") {
                     move();
+                    clearInterval(i);
+                    autoplay();
                 }
                 /*
                 else if(direction=="down"){
@@ -59,5 +62,18 @@ $(document).ready(function () {
             }
         });
     });
+    function readDeviceOrientation() {
+        switch (window.orientation) {
+            case 0:
+                arrow.css("transform", ": translateY(-50px);");
+            case 90:
+                break;
+            case 180:
+                break;
+            case 270:
+                break;
+        }
+    }
+    readDeviceOrientation();
 });
 
