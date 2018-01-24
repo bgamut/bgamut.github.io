@@ -190,7 +190,7 @@ p {
     color:white;
     opacity:0.85;
 }
-@media only screen and (max-device-width: 480px){
+@media (max-width: 480px){
 
 @font-face {
     font-family: 'Press Start 2P',cursive;
