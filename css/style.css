@@ -295,8 +295,8 @@ body {
     line-height: normal;
     top:50%;
     border: 0px;
-    padding: 0px;
-    margin: 0 auto;
+    padding: 15px;
+    margin: 15px;
     z-index: auto;
     transform: translateY(-10vh);
     font-size:1.5em;
@@ -310,8 +310,8 @@ body {
     line-height: normal;
     top:50%;
     border: 0px;
-    padding: 0px;
-    margin: 0 auto;
+    padding: 15px;
+    margin: 15px;
     z-index: auto;
     transform: translateY(-10vh);
     font-size:1.5em;
