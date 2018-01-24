@@ -4,22 +4,30 @@
 }
 html{
     overflow:hidden;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
 }
 iframe{
     height:100vh;
     width:100vw;
 }
 body {
-    background-color:black;
+    background-color: black;
     font-family: 'Press Start 2P';
     border: 0px;
     padding: 0px;
-    margin: 0 auto;
+    margin: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 
-    position:fixed;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 .top {
     border:0px;
