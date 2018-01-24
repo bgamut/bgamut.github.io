@@ -350,7 +350,7 @@ body {
     text-align:center;
 }
 .name-box form{
-    margin-left:15px;
+    position:center;
     margin-top:12px;
 }
 p {

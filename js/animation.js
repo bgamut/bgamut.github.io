@@ -66,8 +66,10 @@ $(document).ready(function () {
     function readDeviceOrientation() {
         switch (window.orientation) {
             case 0:
+                /*
                 info.css("transform", "translateY(-28px);");
                 arrow.css("transform", "translateY(-150px);");
+                */
             case 90:
                 break;
             case 180:
