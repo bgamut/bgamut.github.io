@@ -349,10 +349,15 @@ body {
     position:center;
     text-align:center;
 }
+.name-box .picture{
+    display:block;
+    position:center;
+}
 .name-box form{
     position:center;
     margin-top:12px;
 }
+
 p {
     color: white;
 }
