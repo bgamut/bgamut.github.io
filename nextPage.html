@@ -643,7 +643,7 @@ window.onresize = function(){
                 
         }
     
-    window.ontouchstart=function(e){
+    document.body.ontouchstart=function(e){
         nextPage.autoscroll=false;
         startDragX=event.screenX;
         startDragY=event.screenY;
@@ -654,7 +654,7 @@ window.onresize = function(){
             clearInterval(animatedDiv)
         }
     }
-    window.ontouchmove=function(e){
+    document.body.ontouchmove=function(e){
            
 
         if(mouseIsDown==true){
@@ -697,7 +697,7 @@ window.onresize = function(){
         
 
     }
-    window.ontouchend=function(e){
+    document.body.ontouchend=function(e){
         nextPage.autoscroll=true
         mouseIsDown=false;
         enteredDrag=true;
