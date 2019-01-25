@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>progressIndicate</title>
+    <style>
+        @font-face{
+            font-family: "Roboto Mono Thin";
+            src: url("./../fonts/Roboto_Mono/RobotoMono-Thin.ttf");
+        }
+        @font-face{
+            font-family: "Roboto Mono";
+            src: url("./../fonts/Roboto_Mono/RobotoMono-Regular.ttf");
+        }
+        @font-face{
+            font-family: "Lucida Regular";
+            src: url("./../fonts/Lucida Sans Typewriter Regular.ttf");
+        }
+        @font-face{
+            font-family: "Helvetica Neue";
+            src: url("./../fonts/HelveticaNeue.ttf");
+        }
+        @font-face {
+            font-family: 'Exan';
+            src: url("./../fonts/Exan-3/Exan-Regular.ttf")
+        }
+        /*Spectral*/
+        @import url('https://fonts.googleapis.com/css?family=Spectral');
+        body{
+            font-family: 'Helvetica Neue';
+            -webkit-app-region:drag;
+            margin:0px;
+            padding:0px;
+            height:100vh;
+            width:100vw;
+            background-color:rgb(30, 30, 30);
+            overflow:hidden;
+        }   
+        .nextPageButton{
+            
+            position:relative;
+            padding:5px;
+            
+            margin:8px;
+            width:auto;
+            height:auto;
+            border-radius:8px;
+            display: block;
+            vertical-align: middle;
+            text-align:center;
+            flex-direction:row;
+            background-color:rgb(45,45,45);
+            color:rgb(142, 142, 142);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .nextPageButton:focus{
+            /*
+            font-family:'Roboto Mono Thin';
+            */
+            position:relative;
+            padding:5px;
+            margin:8px;
+            width:auto;
+            height:auto;
+            border-radius:8px;
+            display: block;
+            vertical-align: middle;
+            text-align:center;
+            flex-direction:row;
+            background-color:rgb(188,188,188);
+            color:rgb(30, 30, 30);
+            outline: 0;
+        }
+        
+        .nextPageButton:active{
+            /*
+            font-family:'Roboto Mono Thin';
+            */
+            position:relative;
+            padding:5px;
+            margin:8px;
+            
+            width:auto;
+            height:auto;
+            border-radius:8px;
+            display: block;
+            vertical-align: middle;
+            text-align:center;
+            flex-direction:row;
+            background-color:rgb(45,45,45);
+            color:rgb(142, 142, 142);
+        }
+        .nextPageButton:not(:active){
+            /*
+            font-family:'Roboto Mono Thin';
+            */
+            position:relative;
+            padding:5px;
+            margin:8px;
+            width:auto;
+            height:auto;
+            border-radius:8px;
+            display: block;
+            vertical-align: middle;
+            text-align:center;
+            flex-direction:row;
+            background-color:rgb(45,45,45);
+            color:rgb(142, 142, 142);
+        }
+        .nextPageSelect{
+            position:relative;
+            padding:5px;
+            
+            margin:8px;
+            
+            width:auto;
+            height:auto;
+            border-radius:8px;
+            display: block;
+            vertical-align: middle;
+            text-align:center;
+            flex-direction:row;
+            outline: 0;
+            background-color:rgb(45,45,45);
+            color:rgb(142, 142, 142);
+        }
+        .nextPageSelect:focus{
+            position:relative;
+            padding:5px;
+            
+            margin:8px;
+            
+            width:auto;
+            height:auto;
+            border-radius:8px;
+            display: block;
+            vertical-align: middle;
+            text-align:center;
+            flex-direction:row;
+            outline: 0;
+        }
+        .nextPageContainer{
+            position:absolute;
+            display: table;
+            width:100%;
+            height:100%;
+        }
+
+        .nextPageRow{
+            display:table-row;
+            /*
+            display:flex;
+            */
+            flex-direction: row;
+            width:100vw;
+            height:50vh;
+            overflow:hidden
+        }
+       
+        .flexRow{
+            display:flex;
+            margin-left:15px;
+            margin-right:15px;
+        }
+        .nextPageText{
+            /*
+            font-family:'Roboto Mono Thin';
+            */
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            border:solid 2px rgb(30, 30, 30);
+            background-color:rgb(30, 30, 30);
+            color:rgb(142,142,142);
+            position:absolute;
+            word-wrap:break-word;
+            overflow-x:hidden;
+            overflow-y:hidden;
+            padding:15px;
+            text-align:center;
+            
+            /*
+            background-color:transparent;
+            */
+            width:100%;
+            
+            opacity:1.0;
+            z-index:1;
+        }
+        #text1{
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+   </style>
+</head>
+<body>
+
+</body>
+<script>
+    var scrollerFunction=null;
+    var count = 0;
+    var acceleration=0.5
+    var xDistance=0
+    var yDistance=0
+    var distance=function(velocity){
+        var distance = velocity-acceleration*count
+        if (distance>=0){
+            return distance;
+        }
+        else{
+            return 0;
+        }
+    }
+    var interval = 1000/60;
+    var repeats =12;
+    var startDragX;
+    var currentDragX=0;
+    var endDragX;
+    var pastDragX=0;
+    var startDragY;
+    var currentDragY=0;
+    var endDragY;
+    var pastDragY=0;
+    var finishMoveX=0
+    var finishMoveY=0
+    var mouseIsDown = false
+    var currentMoveX=0;
+    var currentMoveY=0;
+    var pastMoveX=0;
+    var pastMoveY=0;
+    var savedMoveX=0;
+    var savedMoveY=0;
+    var arrayX=[0,0,0,0,0,0,0,0,0]
+    var arrayY=[0,0,0,0,0,0,0,0,0]
+    var pastArrayX=[0,0,0,0,0,0,0,0,0]
+    var pastArrayY=[0,0,0,0,0,0,0,0,0]
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    var animatedDiv;
+    var enteredDrag=false
+
+    function Timer(func, interval, repeat, runAtStart){
+        this.func = func;
+        this.interval = interval;
+        this.repeat = repeat || 0;
+        this.runAtStart = runAtStart;
+        this.run = true;
+        this.count = 0;
+        this.startTime = Date.now();
+        if (this.runAtStart==true)
+            this.tick();
+        else
+        {
+            var _this = this;
+            this.timeout = setTimeout( function(){ _this.tick(); }, this.interval);
+        }
+        this.stop=function(){
+            this.run=false;
+        }
+        this.tick=function(){
+            this.func();
+            this.count++;
+            if(this.run==true){
+                if (this.repeat === -1 || (this.repeat > 0 && this.count < this.repeat) )
+                {
+                    var adjustedInterval = Math.max( 1, this.startTime + ( (this.count+(this.runAtStart ? 2 : 1)) * this.interval ) - Date.now() );
+                    var _this = this;
+                    this.timeout = setTimeout( function(){ _this.tick(); }, adjustedInterval);
+                }
+            }
+        }
+    }
+    function nextPage(id){
+        this.ID=id
+        this.prevButtonMessage = "PREV"
+        this.nextButtonMessage = "NEXT"
+        this.nextPageMessage = "Oh you said it Oh yea If I had twenty million dollars in a vault somewhere baby, it wouldn't matter anyway Cause the doctor told me that I'm dying slowly So I guess I got to love you while I'm here baby Did you know The news said the sky is falling, the globe is warming My country warring, leaders are lying, time is running No where to go I know we just met but baby could u love me quickly, quickly I, want you to love me like you know the world is about to end baby, quickly You said you didn't even know my name, but Told me we mind as well make ours the same What do you think baby (no time) Think it mind as well be light years away, ohhh We just better land on the stars before they come crashing down cause I heard the news say The news said the sky is falling, the globe is warming My country warring, leaders are lying, time is running No where to go I know we just met but baby could u love me quickly, quickly I, want you to love me like you know the world is about to end baby, quickly Yea that's right baby kiss me like the world is quacking Do it like the earth is shaking You got it baby, that's right lovely Fill me like our time is sprinting faster running out of time I know we just met but baby could u love me quickly, quickly I, want you to love me like you know the world is about to end baby, quickly "
+        this.containerElement=null;
+        this.row1Element=null;
+        this.row2Element=null;
+        this.textElement=null;
+        this.prevButtonElement=null;
+        this.nextButtonElement=null;
+        this.scroll=0;
+        this.scrolling=false;
+        this.textContainerElement;
+        this.nextFunction=function(){console.log('next')};
+        this.prevFunction=function(){console.log('prev')};
+        this.draw=function(){
+            this.textElement=document.getElementById(this.textID)
+            textElement.setAttribute('x',this.centerX+this.radius*0.5)
+            textElement.setAttribute('y',this.centerY+(textElement.getBBox().height/2.75))
+            textElement.innerHTML=((this.endAngle-this.startAngle)*100/359).toFixed(2)+"%"
+            document.getElementById(this.arcID).setAttribute("d", describeArc(this.centerX, this.centerY, this.radius, this.startAngle, this.endAngle));
+        }
+        
+        this.scroll = function(){
+            var textContainerElement=this.textContainerElement
+            if(this.scrolling==false){
+                //console.log(textContainerElement.scrollHeight)
+                //console.log(currentMoveY)
+                this.scrolling=true;
+                var that = this
+                
+                scrollerFunction = setInterval(function(){
+                    if(textContainerElement.clientHeight<textContainerElement.scrollHeight&&that.autoscroll==true){
+                        //console.log(currentMoveY +":"+that.fixedClientHeight+"+"+that.fixedScrollHeight)
+                        if(currentMoveY>that.fixedClientHeight){
+                            currentMoveY=(-1)*that.fixedScrollHeight
+                        }
+                        else if((-1*currentMoveY)>that.fixedScrollHeight){
+                            
+                            currentMoveY=that.fixedClientHeight
+                        }    
+                        else{
+                            currentMoveY--
+                        }
+                    }
+                    else if(textContainerElement.clientHeight<textContainerElement.scrollHeight&&that.autoscroll==false){
+
+                    }
+                    else{
+                        pastMoveX=currentMoveX
+                        pastMoveY=currentMoveY
+                        currentMoveY=0
+                        currentMoveX=0
+                        that.scrolling=false
+                        that.autoscroll=false
+                        clearInterval(scrollerFunction)
+                    }
+                    document.getElementById('text1').style.transition="all ease-in-out 0s"
+                    //document.getElementById('text1').style.transform="translate("+currentMoveX+"px,"+currentMoveY+"px)"
+                    document.getElementById('text1').style.transform="translate("+0+"px,"+currentMoveY+"px)"
+                    
+                    
+                },50)
+                
+            }
+        }
+                
+            
+        
+        this.refresh=function(){
+            
+            this.row1Element.style.height=(document.body.offsetHeight-50)+'px'
+            this.row2Element.style.height='35px'
+            this.row2Element.style.width='100%'
+            var buttonContainer=document.getElementById('flexRow2')
+            buttonContainer.style.transform='translate(0px,-5px)'
+            var prev = document.getElementById('prev1')
+            var next = document.getElementById('next1')
+            var translateWidth = Math.floor((buttonContainer.offsetWidth-(prev.offsetWidth+next.offsetWidth)-30)/2)
+            this.textElement.style.transform =String('translate(0px,'+this.scroll+'px)')
+            prev.style.transform='translate('+translateWidth+'px,0px)'
+            next.style.transform='translate('+translateWidth+'px,0px)'
+            this.textContainerElement=this.textElement.parentElement
+            this.fixedScrollHeight = this.textContainerElement.scrollHeight
+            this.fixedClientHeight = this.textContainerElement.clientHeight
+            this.autoscroll=true;
+            this.scroll()
+            
+            
+            /*
+            this.row2.style.height=document.getElementById('flexRow1').offsetHeight
+            this.row1.style.height=this.containerElement.offsetHeight-row2.offsetHeight+"px"
+            console.log(this.row1.offsetHeight)
+            console.log(this.textElement.offsetHeight)
+            this.width=this.pointer.offsetWidth
+            this.height=this.pointer.offsetHeight
+            this.centerX=this.width/2
+            this.centerY=this.height/2
+            this.radius=this.centerX<this.centerY?this.centerX/2:this.centerY/2;
+            document.getElementById(this.textID).style.fontSize=this.radius/4+'px'
+            this.draw()
+            */
+        }
+        
+        this.appendPage=function(parent){
+            
+            var htmlString="<div class='nextPageText nextPageRow' id = nextPageText"+this.ID+"><div id=text1>"+this.nextPageMessage+"</div></div><div class='nextPageRow' id='row2'><div class='flexRow' id = 'flexRow2'><button class='nextPageButton' id=prev"+this.ID+">"+this.prevButtonMessage+"</button><button class='nextPageButton' id=next"+this.ID+">"+this.nextButtonMessage+"</button></div></div>"
+            var a = document.createElement('div')
+            
+            a.setAttribute('class','nextPageContainer')
+            a.setAttribute('id','nextPageContainer'+this.ID)
+            a.innerHTML = htmlString
+            parent.appendChild(a)
+            this.containerElement = document.getElementById("nextPageContainer"+this.ID)
+            this.containerElement.style.width="100%"
+            this.containerElement.style.height="100%"
+            this.row1Element= document.getElementById('nextPageText1')
+            this.row2Element= document.getElementById('row2')
+            this.textElement=document.getElementById('text1')
+            this.refresh()  
+            
+        }
+        this.linkNextFunctionTo=function(func){
+            this.nextFunction=func
+            var next = document.getElementById('next1')
+            next.addEventListener('mousedown',function(){
+                //this.nextFunction()
+                func()
+            })
+        }
+        this.linkPrevFunctionTo=function(func){
+            this.prevFunction=func
+            var prev = document.getElementById('prev1')
+            prev.addEventListener('mousedown',function(){
+                //this.prevFunction()
+                func()
+            })
+        }
+        
+    }
+var nextPage =new nextPage(1)
+window.onload = function() {
+    var nextFunc = function(){console.log('next')}
+    var prevFunc = function(){console.log('prev')}
+    nextPage.appendPage(document.body)
+    nextPage.linkNextFunctionTo(nextFunc)
+    nextPage.linkPrevFunctionTo(prevFunc)
+    /*
+    p.refresh()
+    p.draw()
+    */
+
+};
+window.onresize = function(){
+    nextPage.refresh()
+    /*
+    p.refresh()
+    */
+}
+
+    
+    
+       
+   
+    document.body.onmousemove=function(event){
+        
+
+        if(mouseIsDown==true){
+            
+            pastDragX=currentDragX;
+            pastDragY=currentDragY;
+            arrayX.shift(1)
+            arrayX.push(currentDragX)
+            arrayY.shift(1)
+            arrayY.push(currentDragY)
+            
+            currentDragX=event.screenX;
+            currentDragY=event.screenY;
+
+            currentMoveX=(currentDragX-startDragX);
+            currentMoveY=(currentDragY-startDragY);
+            currentMoveX=pastMoveX+currentMoveX
+            currentMoveY=pastMoveY+currentMoveY
+            if(currentMoveY>nextPage.fixedClientHeight){
+                currentMoveY=(-1)*nextPage.fixedScrollHeight
+            }
+            else if((-1*currentMoveY)>nextPage.fixedScrollHeight){
+                
+                currentMoveY=nextPage.fixedClientHeight
+            }      
+            if (Math.abs(currentMoveX%document.body.offsetWidth)<13){
+                currentMoveX=Math.round(currentMoveX/document.body.offsetWidth)*document.body.offsetWidth  
+            }
+
+            
+            if (Math.abs(currentMoveY%document.body.offsetHeight)<13){
+                currentMoveY=Math.round(currentMoveY/document.body.offsetHeight)*document.body.offsetHeight
+            }
+
+            //console.log(currentMoveY)
+            //document.getElementById('text1').style.transform="translate("+currentMoveX+"px,"+currentMoveY+"px)"
+            document.getElementById('text1').style.transform="translate("+0+"px,"+currentMoveY+"px)"
+        }
+
+        
+
+    }
+    document.onmouseup=function(event){
+        nextPage.autoscroll=true
+        mouseIsDown=false;
+        enteredDrag=true;
+        var dissimilarity=0
+        var xVelocity = 0
+        var yVelocity = 0
+        for (var i=0;i<9; i++){
+            dissimilarity+=Math.abs(pastArrayX[i]-arrayX[i]);
+            dissimilarity+=Math.abs(pastArrayY[i]-arrayY[i]);
+        }
+
+        if(dissimilarity>300){
+            xVelocity = (arrayX[8]-arrayX[0])/10
+            yVelocity = (arrayY[8]-arrayY[0])/10
+        }
+        else{
+            xVelocity=0
+            yVelocity=0
+        }
+        
+        var friction = 0.978
+        var listofdistance=[]
+        var animationStart=true
+        animatedDiv=setInterval(function(){
+                if(Math.abs(xVelocity*friction)>1){
+                    xVelocity = xVelocity*friction
+                }
+                else{
+                    xVelocity=0
+                }
+                if(Math.abs(yVelocity*friction)>1){
+                    yVelocity = yVelocity*friction
+                }
+                else{
+                    yVelocity=0
+                }
+                xDistance = Math.round(xVelocity)
+                yDistance = Math.round(yVelocity)
+                currentMoveX+=xDistance;
+                currentMoveY+=yDistance;
+                listofdistance.push(yDistance)
+                
+                
+                if(currentMoveY>nextPage.fixedClientHeight){
+                    currentMoveY=(-1)*nextPage.fixedScrollHeight
+                }
+                else if((-1*currentMoveY)>nextPage.fixedScrollHeight){
+                    
+                    currentMoveY=nextPage.fixedClientHeight
+                }    
+                        
+                        
+                //console.log(currentMoveY)
+                //document.getElementById('text1').style.transform="translate("+currentMoveX+"px,"+currentMoveY+"px)"
+                document.getElementById('text1').style.transform="translate("+0+"px,"+currentMoveY+"px)"
+                count++
+                pastMoveX=currentMoveX
+                pastMoveY=currentMoveY
+                if(count>175){
+
+                    count=0;
+                    animationStart=false
+                    clearInterval(animatedDiv)
+                }
+            },18)
+        for (var i=0;i<9; i++){
+            pastArrayX[i]=arrayX[i];
+            pastArrayY[i]=arrayY[i];
+        }
+
+        if (Math.abs(currentMoveX%document.body.offsetWidth)<13){
+                currentMoveX=Math.round(currentMoveX/document.body.offsetWidth)*document.body.offsetWidth  
+                pastMoveX=currentMoveX
+                document.getElementById('text1').style.transition="all ease-in-out 3s"
+            }
+
+            
+        if (Math.abs(currentMoveY%document.body.offsetHeight)<13){
+                currentMoveY=Math.round(currentMoveY/document.body.offsetHeight)*document.body.offsetHeight
+                pastMoveY=currentMoveY
+                document.getElementById('text1').style.transition="all ease-in-out 3s"
+            }
+        
+        
+        //console.log(currentMoveY)
+        //document.getElementById('text1').style.transform="translate("+currentMoveX+"px,"+currentMoveY+"px)"
+        document.getElementById('text1').style.transform="translate("+0+"px,"+currentMoveY+"px)"
+        document.getElementById('text1').style.transition="all ease-in-out 0s"
+    }  
+    document.body.onresize=function(event){
+        nextPage.refresh()
+        
+    }
+    document.body.onmousedown=function(event){
+        nextPage.autoscroll=false;
+        startDragX=event.screenX;
+        startDragY=event.screenY;
+        //console.log(currentMoveY/(document.body.offsetHeight))
+        mouseIsDown = true;
+        enteredDrag = true;
+        if(animatedDiv!==undefined){
+            clearInterval(animatedDiv)
+        }
+
+    }
+    
+    
+    document.body.onwheel=function(e){
+        var wheels=0
+        var wheelVelocity=0
+        var dir = Math.sign(e.deltaY);
+        
+        var count=0
+        if(Math.abs(wheelVelocity<20)){
+            wheelVelocity -=dir
+        }
+        
+        var friction=0.75
+        
+            
+            var animatedDiv= setInterval(function(){
+                if(Math.abs(wheelVelocity*friction)>1){
+                    wheelVelocity = wheelVelocity*friction
+                }
+                if (mouseIsDown==true){
+                    wheelVelocity=0
+                }
+
+                yDistance = Math.round(wheelVelocity)
+                currentMoveY+=yDistance;
+
+                if(currentMoveY>nextPage.fixedClientHeight){
+                    currentMoveY=(-1)*nextPage.fixedScrollHeight
+                }
+                else if((-1*currentMoveY)>nextPage.fixedScrollHeight){
+                    
+                    currentMoveY=nextPage.fixedClientHeight
+                }    
+                        
+
+                document.getElementById('text1').style.transform="translate("+0+"px,"+currentMoveY+"px)"
+                count++
+                //console.log(count)
+                pastMoveX=currentMoveX
+                pastMoveY=currentMoveY
+                if(count>50){
+
+                    count=0;
+ 
+                    clearInterval(animatedDiv)
+                                    
+                 }
+            },18)
+                
+        }
+    
+    window.ontouchstart=function(e){
+        console.log(e)
+    }
+    
+     
+    </script>
+</html>
