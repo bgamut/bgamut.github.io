@@ -644,8 +644,150 @@ window.onresize = function(){
         }
     
     window.ontouchstart=function(e){
-        console.log(e)
+        nextPage.autoscroll=false;
+        startDragX=event.screenX;
+        startDragY=event.screenY;
+        //console.log(currentMoveY/(document.body.offsetHeight))
+        mouseIsDown = true;
+        enteredDrag = true;
+        if(animatedDiv!==undefined){
+            clearInterval(animatedDiv)
+        }
     }
+    window.ontouchmove=function(e){
+           
+
+        if(mouseIsDown==true){
+            
+            pastDragX=currentDragX;
+            pastDragY=currentDragY;
+            arrayX.shift(1)
+            arrayX.push(currentDragX)
+            arrayY.shift(1)
+            arrayY.push(currentDragY)
+            
+            currentDragX=event.screenX;
+            currentDragY=event.screenY;
+
+            currentMoveX=(currentDragX-startDragX);
+            currentMoveY=(currentDragY-startDragY);
+            currentMoveX=pastMoveX+currentMoveX
+            currentMoveY=pastMoveY+currentMoveY
+            if(currentMoveY>nextPage.fixedClientHeight){
+                currentMoveY=(-1)*nextPage.fixedScrollHeight
+            }
+            else if((-1*currentMoveY)>nextPage.fixedScrollHeight){
+                
+                currentMoveY=nextPage.fixedClientHeight
+            }      
+            if (Math.abs(currentMoveX%document.body.offsetWidth)<13){
+                currentMoveX=Math.round(currentMoveX/document.body.offsetWidth)*document.body.offsetWidth  
+            }
+
+            
+            if (Math.abs(currentMoveY%document.body.offsetHeight)<13){
+                currentMoveY=Math.round(currentMoveY/document.body.offsetHeight)*document.body.offsetHeight
+            }
+
+            //console.log(currentMoveY)
+            //document.getElementById('text1').style.transform="translate("+currentMoveX+"px,"+currentMoveY+"px)"
+            document.getElementById('text1').style.transform="translate("+0+"px,"+currentMoveY+"px)"
+        }
+
+        
+
+    }
+    window.ontouchend=function(e){
+        nextPage.autoscroll=true
+        mouseIsDown=false;
+        enteredDrag=true;
+        var dissimilarity=0
+        var xVelocity = 0
+        var yVelocity = 0
+        for (var i=0;i<9; i++){
+            dissimilarity+=Math.abs(pastArrayX[i]-arrayX[i]);
+            dissimilarity+=Math.abs(pastArrayY[i]-arrayY[i]);
+        }
+
+        if(dissimilarity>300){
+            xVelocity = (arrayX[8]-arrayX[0])/10
+            yVelocity = (arrayY[8]-arrayY[0])/10
+        }
+        else{
+            xVelocity=0
+            yVelocity=0
+        }
+        
+        var friction = 0.978
+        var listofdistance=[]
+        var animationStart=true
+        animatedDiv=setInterval(function(){
+                if(Math.abs(xVelocity*friction)>1){
+                    xVelocity = xVelocity*friction
+                }
+                else{
+                    xVelocity=0
+                }
+                if(Math.abs(yVelocity*friction)>1){
+                    yVelocity = yVelocity*friction
+                }
+                else{
+                    yVelocity=0
+                }
+                xDistance = Math.round(xVelocity)
+                yDistance = Math.round(yVelocity)
+                currentMoveX+=xDistance;
+                currentMoveY+=yDistance;
+                listofdistance.push(yDistance)
+                
+                
+                if(currentMoveY>nextPage.fixedClientHeight){
+                    currentMoveY=(-1)*nextPage.fixedScrollHeight
+                }
+                else if((-1*currentMoveY)>nextPage.fixedScrollHeight){
+                    
+                    currentMoveY=nextPage.fixedClientHeight
+                }    
+                        
+                        
+                //console.log(currentMoveY)
+                //document.getElementById('text1').style.transform="translate("+currentMoveX+"px,"+currentMoveY+"px)"
+                document.getElementById('text1').style.transform="translate("+0+"px,"+currentMoveY+"px)"
+                count++
+                pastMoveX=currentMoveX
+                pastMoveY=currentMoveY
+                if(count>175){
+
+                    count=0;
+                    animationStart=false
+                    clearInterval(animatedDiv)
+                }
+            },18)
+        for (var i=0;i<9; i++){
+            pastArrayX[i]=arrayX[i];
+            pastArrayY[i]=arrayY[i];
+        }
+
+        if (Math.abs(currentMoveX%document.body.offsetWidth)<13){
+                currentMoveX=Math.round(currentMoveX/document.body.offsetWidth)*document.body.offsetWidth  
+                pastMoveX=currentMoveX
+                document.getElementById('text1').style.transition="all ease-in-out 3s"
+            }
+
+            
+        if (Math.abs(currentMoveY%document.body.offsetHeight)<13){
+                currentMoveY=Math.round(currentMoveY/document.body.offsetHeight)*document.body.offsetHeight
+                pastMoveY=currentMoveY
+                document.getElementById('text1').style.transition="all ease-in-out 3s"
+            }
+        
+        
+        //console.log(currentMoveY)
+        //document.getElementById('text1').style.transform="translate("+currentMoveX+"px,"+currentMoveY+"px)"
+        document.getElementById('text1').style.transform="translate("+0+"px,"+currentMoveY+"px)"
+        document.getElementById('text1').style.transition="all ease-in-out 0s"
+    }  
+   
     
      
     </script>
